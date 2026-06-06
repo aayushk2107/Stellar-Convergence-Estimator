@@ -1,0 +1,85 @@
+package data;
+
+import model.Star;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class StarRepository {
+
+    private static final Map<String, Star> stars =
+            new HashMap<>();
+
+    static {
+
+        stars.put(
+                "sun",
+                new Star(
+                        "Sun",
+                        1.0,
+                        "White Dwarf"
+                )
+        );
+
+        stars.put(
+                "sirius",
+                new Star(
+                        "Sirius",
+                        2.1,
+                        "White Dwarf"
+                )
+        );
+
+        stars.put(
+                "betelgeuse",
+                new Star(
+                        "Betelgeuse",
+                        15.0,
+                        "Neutron Star"
+                )
+        );
+
+        stars.put(
+                "rigel",
+                new Star(
+                        "Rigel",
+                        21.0,
+                        "Neutron Star"
+                )
+        );
+
+        stars.put(
+                "aldebaran",
+                new Star(
+                        "Aldebaran",
+                        1.7,
+                        "White Dwarf"
+                )
+        );
+
+        stars.put(
+                "arcturus",
+                new Star(
+                        "Arcturus",
+                        1.1,
+                        "White Dwarf"
+                )
+        );
+
+        stars.put(
+                "spica",
+                new Star(
+                        "Spica",
+                        11.0,
+                        "Neutron Star"
+                )
+        );
+    }
+
+    public static Star findByName(String name) {
+
+        return stars.get(
+                name.toLowerCase()
+        );
+    }
+}
