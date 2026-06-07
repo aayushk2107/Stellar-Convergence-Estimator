@@ -76,7 +76,12 @@ public class StarRepository {
         );
     }
 
-    public static Star findByName(String name) {
+    public static Star findByName(
+            String name) {
+
+        if (name == null) {
+            return null;
+        }
 
         return stars.get(
                 name.toLowerCase()
