@@ -11,7 +11,7 @@ public class LinearSearchSolver {
         double lifetime =
                 StellarModel.lifetime(mass);
 
-        double step = 1e7;
+        double step = lifetime/10000.0;
 
         double time = 0;
 
