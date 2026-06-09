@@ -2,6 +2,7 @@ package data;
 
 import model.Star;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,10 +75,18 @@ public class StarRepository {
                         "Neutron Star"
                 )
         );
+
+        stars.put(
+                "eta carinae",
+                new Star(
+                        "Eta Carinae",
+                        100.0,
+                        "Black Hole"
+                )
+        );
     }
 
-    public static Star findByName(
-            String name) {
+    public static Star findByName(String name) {
 
         if (name == null) {
             return null;
@@ -86,5 +95,9 @@ public class StarRepository {
         return stars.get(
                 name.toLowerCase()
         );
+    }
+
+    public static Collection<Star> getAllStars() {
+        return stars.values();
     }
 }
