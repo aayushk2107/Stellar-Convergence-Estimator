@@ -1,3 +1,9 @@
+/*
+    Uses binary search to find the age
+    at which a star reaches a target
+    helium fraction.
+*/
+
 package algorithm;
 
 import model.StellarModel;

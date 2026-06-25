@@ -1,3 +1,9 @@
+/*
+    Contains simplified stellar physics
+    equations for lifetime and helium
+    production during the main sequence.
+*/
+
 package model;
 
 public class StellarModel {

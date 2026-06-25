@@ -1,3 +1,9 @@
+/*
+    Uses linear search as a baseline
+    algorithm to compare against
+    binary search performance.
+*/
+
 package algorithm;
 
 import model.StellarModel;

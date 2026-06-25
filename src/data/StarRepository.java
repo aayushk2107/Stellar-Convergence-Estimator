@@ -1,3 +1,8 @@
+/*
+    Stores known stars and their
+    observed properties.
+*/
+
 package data;
 
 import model.Star;

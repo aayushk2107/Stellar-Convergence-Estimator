@@ -1,4 +1,5 @@
 import algorithm.BinarySearchSolver;
+import algorithm.LinearSearchSolver;
 import algorithm.SearchResult;
 import data.StarRepository;
 import model.FateModel;
@@ -12,15 +13,21 @@ public class Main {
         double targetHelium = 0.50;
 
         System.out.println(
-                "===== Stellar Analysis Table =====");
+                "===== Stellar Analysis Table ====="
+        );
 
         System.out.printf(
-                "%-15s %-8s %-15s %-15s %-15s%n",
+                "%-15s %-8s %-15s %-15s %-15s %-15s%n",
                 "Star",
                 "Mass",
                 "Lifetime",
-                "Age(50%)",
+                "Binary Age",
+                "Linear Age",
                 "Fate"
+        );
+
+        System.out.println(
+                "--------------------------------------------------------------------------------"
         );
 
         for (Star star :
@@ -32,8 +39,15 @@ public class Main {
             double lifetime =
                     StellarModel.lifetime(mass);
 
-            SearchResult result =
+            SearchResult binary =
                     BinarySearchSolver
+                            .findTimeForHelium(
+                                    mass,
+                                    targetHelium
+                            );
+
+            SearchResult linear =
+                    LinearSearchSolver
                             .findTimeForHelium(
                                     mass,
                                     targetHelium
@@ -43,11 +57,12 @@ public class Main {
                     FateModel.getFate(mass);
 
             System.out.printf(
-                    "%-15s %-8.1f %-15.2e %-15.2e %-15s%n",
+                    "%-15s %-8.1f %-15.2e %-15.2e %-15.2e %-15s%n",
                     star.getName(),
                     mass,
                     lifetime,
-                    result.age,
+                    binary.age,
+                    linear.age,
                     fate
             );
         }

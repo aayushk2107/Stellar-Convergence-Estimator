@@ -1,3 +1,8 @@
+/*
+    Predicts the final fate of a star
+    based on its mass.
+*/
+
 package model;
 
 public class FateModel {

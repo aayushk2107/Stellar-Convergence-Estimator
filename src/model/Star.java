@@ -1,3 +1,12 @@
+/*
+    Represents a real star in the system.
+
+    Stores:
+    - Name of the star
+    - Mass (in solar masses)
+    - Known final fate from observations
+*/
+
 package model;
 
 public class Star {
