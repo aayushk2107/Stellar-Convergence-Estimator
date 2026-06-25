@@ -1,43 +1,54 @@
+import algorithm.BinarySearchSolver;
+import algorithm.SearchResult;
 import data.StarRepository;
 import model.FateModel;
 import model.Star;
+import model.StellarModel;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        double targetHelium = 0.50;
+
         System.out.println(
-                "===== Validation Table =====");
+                "===== Stellar Analysis Table =====");
 
         System.out.printf(
-                "%-15s %-15s %-15s %-10s%n",
+                "%-15s %-8s %-15s %-15s %-15s%n",
                 "Star",
-                "Known Fate",
-                "Predicted",
-                "Match"
+                "Mass",
+                "Lifetime",
+                "Age(50%)",
+                "Fate"
         );
 
         for (Star star :
                 StarRepository.getAllStars()) {
 
-            String predicted =
-                    FateModel.getFate(
-                            star.getMass()
-                    );
+            double mass =
+                    star.getMass();
 
-            String match =
-                    predicted.equals(
-                            star.getKnownFate()
-                    )
-                            ? "YES"
-                            : "NO";
+            double lifetime =
+                    StellarModel.lifetime(mass);
+
+            SearchResult result =
+                    BinarySearchSolver
+                            .findTimeForHelium(
+                                    mass,
+                                    targetHelium
+                            );
+
+            String fate =
+                    FateModel.getFate(mass);
 
             System.out.printf(
-                    "%-15s %-15s %-15s %-10s%n",
+                    "%-15s %-8.1f %-15.2e %-15.2e %-15s%n",
                     star.getName(),
-                    star.getKnownFate(),
-                    predicted,
-                    match
+                    mass,
+                    lifetime,
+                    result.age,
+                    fate
             );
         }
     }
