@@ -1,10 +1,10 @@
-import visualization.GraphDemo;
+import visualization.ProgressGraph;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        GraphDemo.showHeliumGraph(1.0);
+        ProgressGraph.show(1.0);
 
     }
 }
