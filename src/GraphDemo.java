@@ -6,14 +6,16 @@ import model.SimulationData;
 import model.SimulationPoint;
 import model.StellarModel;
 import org.knowm.xchart.*;
+import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GraphDemo {
 
-    public static void showHeliumGraph(double mass) {
+    public static void generateHeliumGraph(double mass) {
 
         List<SimulationPoint> points =
                 SimulationData.generate(mass);
@@ -125,8 +127,25 @@ public class GraphDemo {
                 SeriesMarkers.CIRCLE
         );
 
-        new SwingWrapper<>(chart)
-                .displayChart();
+        try {
+
+            BitmapEncoder.saveBitmap(
+                    chart,
+                    "helium_graph",
+                    BitmapEncoder.BitmapFormat.PNG
+            );
+
+            System.out.println(
+                    "Graph saved as helium_graph.png"
+            );
+
+        }
+
+        catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
 
     }
 
