@@ -1,12 +1,13 @@
-import visualization.GraphDemo;
+import visualization.ComparisonGraph;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        double mass = 1.0;
-
-        GraphDemo.showHeliumGraph(mass);
+        ComparisonGraph.showComparisonGraph(
+                0.50
+        );
 
     }
+
 }

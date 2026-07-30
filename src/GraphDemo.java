@@ -4,6 +4,7 @@ import algorithm.BinarySearchSolver;
 import algorithm.SearchResult;
 import model.SimulationData;
 import model.SimulationPoint;
+import model.StellarModel;
 import org.knowm.xchart.*;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
@@ -51,24 +52,71 @@ public class GraphDemo {
                         0.50
                 );
 
+        double binaryAge =
+                result.age;
+
+        double targetHelium =
+                StellarModel.helium(
+                        binaryAge,
+                        mass
+                );
+
+        // ---------- Horizontal Line ----------
+
+        List<Double> horizontalX =
+                new ArrayList<>();
+
+        List<Double> horizontalY =
+                new ArrayList<>();
+
+        horizontalX.add(0.0);
+        horizontalX.add(
+                StellarModel.lifetime(mass)
+        );
+
+        horizontalY.add(targetHelium);
+        horizontalY.add(targetHelium);
+
+        chart.addSeries(
+                "Target Helium",
+                horizontalX,
+                horizontalY
+        );
+
+        // ---------- Vertical Line ----------
+
+        List<Double> verticalX =
+                new ArrayList<>();
+
+        List<Double> verticalY =
+                new ArrayList<>();
+
+        verticalX.add(binaryAge);
+        verticalX.add(binaryAge);
+
+        verticalY.add(0.25);
+        verticalY.add(0.70);
+
+        chart.addSeries(
+                "Binary Search Age",
+                verticalX,
+                verticalY
+        );
+
+        // ---------- Solution Point ----------
+
         List<Double> xPoint =
                 new ArrayList<>();
 
         List<Double> yPoint =
                 new ArrayList<>();
 
-        xPoint.add(result.age);
-
-        yPoint.add(
-                model.StellarModel.helium(
-                        result.age,
-                        mass
-                )
-        );
+        xPoint.add(binaryAge);
+        yPoint.add(targetHelium);
 
         XYSeries marker =
                 chart.addSeries(
-                        "Binary Search Result",
+                        "Solution",
                         xPoint,
                         yPoint
                 );
